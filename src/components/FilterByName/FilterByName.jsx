@@ -1,3 +1,4 @@
+// import { useEffect } from 'react';
 import css from './FilterByName.module.css'
 import {useDispatch, useSelector } from "react-redux";
 // import { PropTypes } from 'prop-types';
@@ -11,6 +12,8 @@ export const FilterByName = () => {
 	const changeFilter= data => {
     dispatch(contactsSearch(data));
 };
+
+// useEffect (()=>{},[])
 
   return (
     <>

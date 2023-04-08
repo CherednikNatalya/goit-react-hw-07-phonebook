@@ -6,13 +6,17 @@ import { PropTypes } from "prop-types";
 export default function ContactsList () {
   const contacts = useSelector(state => state.contacts.contacts.filter(contact => contact.name.toLowerCase().includes(state.contacts.filter)));
   const dispatch = useDispatch();
- 
+  const isLoading = useSelector(state=> state.contacts.isLoading)
+
   const onDeleteContact = id => {
     dispatch(deleteContact(id));
   };
 
     return(
-        <div className={css.formStyle}>
+
+      {isLoading === true  && (<p>... Loading</p>)},
+
+      <div className={css.formStyle}>
           
             <ul className={css.contactsList}>
       {contacts.map(({ id, name, number }) =>(
@@ -31,8 +35,9 @@ export default function ContactsList () {
       ))}
     </ul>
         </div>
-    )
-  }
+    
+  );
+}
 
   ContactsList.propTypes = {
 	contacts: PropTypes.arrayOf(

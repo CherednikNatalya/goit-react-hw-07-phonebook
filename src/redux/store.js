@@ -11,13 +11,8 @@ import {
 import {contactsReducer} from "./slice";
 
 
-// const initState = {
-//     contacts: initialState,
-//   };
-
 export const store = configureStore({
-    // preloadedState: initState,
-    // devTools: true,
+  
     reducer: {
         contacts: contactsReducer,
     },
