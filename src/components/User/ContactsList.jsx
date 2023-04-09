@@ -6,7 +6,7 @@ import { PropTypes } from "prop-types";
 export default function ContactsList () {
   const contacts = useSelector(state => state.contacts.contacts.filter(contact => contact.name.toLowerCase().includes(state.contacts.filter)));
   const dispatch = useDispatch();
-  const isLoading = useSelector(state=> state.contacts.isLoading)
+  // const isLoading = useSelector(state=> state.contacts.isLoading)
 
   const onDeleteContact = id => {
     dispatch(deleteContact(id));
@@ -14,7 +14,7 @@ export default function ContactsList () {
 
     return(
 
-      {isLoading === true  && (<p>... Loading</p>)},
+      // {isLoading === true  && (<p>... Loading</p>)},
 
       <div className={css.formStyle}>
           
