@@ -3,10 +3,9 @@ import { nanoid } from 'nanoid'
 import css from './Form.module.css';
 // import { PropTypes } from 'prop-types';
 import { useDispatch, useSelector } from "react-redux";
-import {addContact} from '../../redux/slice'
-// import {getContacts} from '../../redux/reducer'
+import {addContact} from 'redux/operations'
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-
+import {selectContacts} from 'redux/selectors'
 
 export const Form =() => {
 
@@ -14,7 +13,7 @@ export const Form =() => {
  const [number, setNumber] = useState('')
 
  const dispatch = useDispatch();
-const contacts = useSelector(state => state.contacts.contacts);
+const contacts = useSelector(selectContacts);
 
   const nameId = nanoid()
   const numberId = nanoid()

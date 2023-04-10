@@ -1,22 +1,32 @@
 import css from './ContactsList.module.css';
+import { useEffect} from 'react';
 import {useDispatch, useSelector } from "react-redux";
-import {deleteContact} from 'redux/slice'
+import {deleteContact, fetchContacts} from 'redux/operations'
 import { PropTypes } from "prop-types";
+import {selectFilterContacts,selectIsLoading, selectError} from 'redux/selectors'
 
 export default function ContactsList () {
-  const contacts = useSelector(state => state.contacts.contacts.filter(contact => contact.name.toLowerCase().includes(state.contacts.filter)));
+  const isLoading = useSelector(selectIsLoading);
+	const error = useSelector(selectError);
+  const contacts = useSelector(selectFilterContacts);
+
   const dispatch = useDispatch();
-  // const isLoading = useSelector(state=> state.contacts.isLoading)
+ 
+  useEffect (()=>{
+    dispatch(fetchContacts())},
+    [dispatch])
 
   const onDeleteContact = id => {
     dispatch(deleteContact(id));
   };
 
     return(
+<>
+{isLoading && <p>Loading...</p>}
+			{error && <h2>ERROR</h2>}
+			{!isLoading && !error &&
 
-      // {isLoading === true  && (<p>... Loading</p>)},
-
-      <div className={css.formStyle}>
+      (<div className={css.formStyle}>
           
             <ul className={css.contactsList}>
       {contacts.map(({ id, name, number }) =>(
@@ -34,10 +44,9 @@ export default function ContactsList () {
         </li>
       ))}
     </ul>
-        </div>
-    
-  );
-}
+        </div>)};
+  </>
+)}
 
   ContactsList.propTypes = {
 	contacts: PropTypes.arrayOf(

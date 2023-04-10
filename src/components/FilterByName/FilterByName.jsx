@@ -3,11 +3,12 @@ import css from './FilterByName.module.css'
 import {useDispatch, useSelector } from "react-redux";
 // import { PropTypes } from 'prop-types';
 import {contactsSearch} from "redux/slice";
+import {selectFilter} from 'redux/selectors'
 
 
 export const FilterByName = () => {
   const dispatch = useDispatch(); 
-  const filter = useSelector(state => state.contacts.filter);
+  const filter = useSelector(selectFilter);
 
 	const changeFilter= data => {
     dispatch(contactsSearch(data));
