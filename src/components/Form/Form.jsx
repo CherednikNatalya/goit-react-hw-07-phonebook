@@ -10,13 +10,13 @@ import {selectContacts} from 'redux/selectors'
 export const Form =() => {
 
  const [name, setName] = useState('')
- const [number, setNumber] = useState('')
+ const [phone, setPhone] = useState('')
 
  const dispatch = useDispatch();
 const contacts = useSelector(selectContacts);
 
   const nameId = nanoid()
-  const numberId = nanoid()
+  const phoneId = nanoid()
 
   const handleChangeInfo = evt => {
     const {name, value } = evt.target;
@@ -25,8 +25,8 @@ const contacts = useSelector(selectContacts);
         setName(value);
         break;
         
-        case 'number':
-        setNumber(value);
+        case 'phone':
+        setPhone(value);
         break;
         default:
           return;
@@ -38,7 +38,7 @@ const contacts = useSelector(selectContacts);
         const data = {
           id: nanoid(),
           name,
-          number,
+          phone,
         };
         const newName = contacts.find(
           el => el.name.toLowerCase() === name.toLowerCase()
@@ -51,7 +51,7 @@ const contacts = useSelector(selectContacts);
         }
         
         setName('')
-        setNumber('')
+        setPhone('')
     }
 
         return(
@@ -75,15 +75,15 @@ const contacts = useSelector(selectContacts);
 </div>
 
 <div >
-          <label htmlFor={numberId} className={css.labelStyle}>
+          <label htmlFor={phoneId} className={css.labelStyle}>
             <p className={css.text}>Number</p>
           </label>
         <input
          className={css.inputStyle}
-        id={numberId}
+        id={phoneId}
         type="tel"
-  value={number}
-  name="number"
+  value={phone}
+  name="phone"
   pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
   title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
   required

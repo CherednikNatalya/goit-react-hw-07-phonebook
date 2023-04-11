@@ -3,15 +3,18 @@ import { useEffect} from 'react';
 import {useDispatch, useSelector } from "react-redux";
 import {deleteContact, fetchContacts} from 'redux/operations'
 import { PropTypes } from "prop-types";
-import {selectFilterContacts,selectIsLoading, selectError} from 'redux/selectors'
+import {selectFilterContacts,
+  selectIsLoading, selectError
+} from 'redux/selectors'
 
 export default function ContactsList () {
 
   const isLoading = useSelector(selectIsLoading);
 	const error = useSelector(selectError);
 
+  // const contacts = useSelector(selectFilterContacts);
   const contacts = useSelector(selectFilterContacts);
-  
+  console.log(contacts );
 
   const dispatch = useDispatch();
  
@@ -28,13 +31,14 @@ export default function ContactsList () {
 {isLoading && <p>Loading...</p>}
 			{error && <h2>ERROR</h2>}
 			{!isLoading && !error &&
-      (<div className={css.formStyle}>
-          
+      (
+      
+      <div className={css.formStyle}>
             <ul className={css.contactsList}>
-      {contacts.map(({ id, name, number }) =>(
+      {contacts?.map(({ id, name, phone}) =>(
         <li className={css.listItem} key={id}>
           <p className={css.titleli}>
-        {name}: {number}
+        {name}: {phone}
       </p>
           <button
             className={css.addButton}
@@ -46,7 +50,9 @@ export default function ContactsList () {
         </li>
       ))}
     </ul>
-        </div>)};
+        </div>
+      )}
+      
   </>
 )}
 
