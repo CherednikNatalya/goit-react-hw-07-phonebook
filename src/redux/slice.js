@@ -54,7 +54,7 @@ reducers: {
 
 
 export const contactsReducer = contactsSlice.reducer;
-export const  contactsSearch = contactsSlice.actions;
+export const  {contactsSearch} = contactsSlice.actions;
 
 
 

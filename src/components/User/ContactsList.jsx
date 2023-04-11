@@ -6,9 +6,12 @@ import { PropTypes } from "prop-types";
 import {selectFilterContacts,selectIsLoading, selectError} from 'redux/selectors'
 
 export default function ContactsList () {
+
   const isLoading = useSelector(selectIsLoading);
 	const error = useSelector(selectError);
+
   const contacts = useSelector(selectFilterContacts);
+  
 
   const dispatch = useDispatch();
  
@@ -25,7 +28,6 @@ export default function ContactsList () {
 {isLoading && <p>Loading...</p>}
 			{error && <h2>ERROR</h2>}
 			{!isLoading && !error &&
-
       (<div className={css.formStyle}>
           
             <ul className={css.contactsList}>

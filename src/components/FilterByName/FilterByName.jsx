@@ -14,8 +14,6 @@ export const FilterByName = () => {
     dispatch(contactsSearch(data));
 };
 
-// useEffect (()=>{},[])
-
   return (
     <>
     <label className={css.formStyle}>
