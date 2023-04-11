@@ -12,7 +12,6 @@ export default function ContactsList () {
   const isLoading = useSelector(selectIsLoading);
 	const error = useSelector(selectError);
 
-  // const contacts = useSelector(selectFilterContacts);
   const contacts = useSelector(selectFilterContacts);
   console.log(contacts );
 

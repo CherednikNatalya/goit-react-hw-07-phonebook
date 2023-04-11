@@ -1,7 +1,5 @@
-// import { useEffect } from 'react';
 import css from './FilterByName.module.css'
 import {useDispatch, useSelector } from "react-redux";
-// import { PropTypes } from 'prop-types';
 import {contactsSearch} from "redux/slice";
 import {selectFilter} from 'redux/selectors'
 

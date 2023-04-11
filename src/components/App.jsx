@@ -12,7 +12,7 @@ import {FilterByName} from './FilterByName/FilterByName'
       <h2>Contacts</h2>
       <FilterByName />
       <ContactsList/>    
-  </>
+      </>
     );
    
   }
